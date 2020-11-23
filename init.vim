@@ -21,14 +21,23 @@ let mapleader=","
 nnoremap <Leader>n <C-w>n<C-w><C-p><C-w>q
 " Open new tab via
 nnoremap <Leader>t :tabnew<CR>
+" Resync syntax highlighting
+nnoremap <Leader>R :syntax sync fromstart<CR>
+" Highlight non-ascii characters
+nnoremap <Leader>E /[^\x00-\x7F]<CR>
+
+" Setup MarkdownPreview plugin
+nnoremap <Leader>m :MarkdownPreview<CR>
 
 " Setup fzf plugin
 nnoremap <Leader>p :Files<CR>
 
 " Setup Nerdtree plugin
 nnoremap <Leader>e :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.DS_Store$','\.git$','.*\.egg\-info$','__pycache__$']
+let NERDTreeIgnore=['\.DS_Store$','\.git$','.*\.egg\-info$','__pycache__$', '\.ipynb_checkpoints$']
 let NERDTreeShowHidden=1
+let NERDTreeShowLineNumbers=1
+autocmd FileType nerdtree setlocal relativenumber
 
 " Setup CtrlSF plugin
 " Map search functions
@@ -40,8 +49,10 @@ let g:ctrlsf_ackprg='rg'
 
 " Setup ayu-theme plugin
 set termguicolors
-let ayucolor='light'
-colorscheme ayu
+" let ayucolor='light'
+let glaciercolor='light'
+" colorscheme ayu
+colorscheme glacier
 
 " Setup additional configuration.
 " Enable line numbering
@@ -52,10 +63,11 @@ set relativenumber
 set foldmethod=indent
 " Share clipboard with system
 set clipboard=unnamedplus
-
 " Enable mouse scrolling. Selection and copy-paste works with 'yank' due to
 " shared clipboard. Also Option-Select works for Cmd-C
 set mouse=a
+" Allow single-line folding
+set fml=0
 
 " Tab spacing
 " Number of visual spaces per TAB
