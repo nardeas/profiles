@@ -34,9 +34,18 @@ nnoremap <Leader>p :Files<CR>
 
 " Setup Nerdtree plugin
 nnoremap <Leader>e :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\.DS_Store$','\.git$','.*\.egg\-info$','__pycache__$', '\.ipynb_checkpoints$']
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
+let NERDTreeIgnore=[
+	\'\.DS_Store$',
+	\'\.git$',
+	\'\.ipynb_checkpoints$',
+	\'\.mypy_cache$',
+	\'__pycache__$',
+	\'.*\.egg\-info$',
+	\'node_modules$'
+	\]
+
 autocmd FileType nerdtree setlocal relativenumber
 
 " Setup CtrlSF plugin
@@ -76,6 +85,8 @@ set tabstop=4
 set softtabstop=4 
 " Number of spaces to use for autoindent
 set shiftwidth=4
+set smarttab
+set expandtab
 
 " Shell
 " Use login shell by default
