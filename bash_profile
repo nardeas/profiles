@@ -20,7 +20,6 @@ export VISUAL="/usr/bin/vim -u ~/.vimrc"
 
 # Tools
 alias vim="nvim"
-alias speedtest="~/.pyenv/versions/3.8.2/envs/test/bin/python3.8 ~/.pyenv/versions/3.8.2/envs/test/bin/speedtest-cli"
 
 # Editing aliases
 alias reloadprofile="source ~/.bash_profile"
@@ -37,8 +36,6 @@ alias rmq="trash"
 # Directory navigation aliases
 alias cdd="cd ~/Desktop"
 alias cdp="cd ~/Private"
-alias cdpe="cd ~/Private/external"
-alias cdpa="cd ~/Private/external/axinoss"
 
 # Python aliases
 alias ipy="ipython"
