@@ -51,6 +51,10 @@ alias xclip="tr -d '\n' | pbcopy"
 
 # Recursively remove DS_Store files
 alias dsremove="find . -name '.DS_Store' -type f -delete"
+
+# Flush DNS cache
+alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+
 # NOTES:
 # Installed extensions:
 # - rg
