@@ -3,12 +3,12 @@ call plug#begin('~/.config/nvim/plugs')
 
 " Declare the list of plugins.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'itchyny/lightline.vim'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'preservim/nerdtree'
-Plug 'ayu-theme/ayu-vim'
 Plug 'airblade/vim-gitgutter'
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -56,12 +56,15 @@ vmap <Leader>F <Plug>CtrlSFVwordExec
 " Set recursive grep program for CtrlSF
 let g:ctrlsf_ackprg='rg'
 
-" Setup ayu-theme plugin
+" Set colorscheme
 set termguicolors
-" let ayucolor='light'
-let glaciercolor='light'
-" colorscheme ayu
-colorscheme glacier
+" colorscheme pyte
+" colorscheme substrata
+colorscheme typewriter
+" colorscheme typewriter-night
+
+" Set lightline colorscheme
+let g:lightline = {'colorscheme': 'wombat'}
 
 " Setup additional configuration.
 " Enable line numbering
@@ -80,9 +83,9 @@ set fml=0
 
 " Tab spacing
 " Number of visual spaces per TAB
-set tabstop=4 
+set tabstop=4
 " Number of spaces in tab when editing
-set softtabstop=4 
+set softtabstop=4
 " Number of spaces to use for autoindent
 set shiftwidth=4
 set smarttab
