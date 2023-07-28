@@ -1,5 +1,4 @@
 source ~/.bash_functions
-source ~/.bash_tools
 
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PYENV_ROOT="$HOME/.pyenv"
@@ -22,7 +21,7 @@ export VISUAL="/usr/bin/vim -u ~/.vimrc"
 alias vim="nvim"
 
 # Editing aliases
-alias reloadprofile="source ~/.bash_profile"
+alias loadprofile="source ~/.bash_profile"
 alias editprofile="nvim ~/.bash_profile"
 alias editvim="nvim ~/.config/nvim/init.vim"
 
