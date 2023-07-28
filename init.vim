@@ -2,14 +2,14 @@
 call plug#begin('~/.config/nvim/plugs')
 
 " Declare the list of plugins.
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'airblade/vim-gitgutter'
+Plug 'dyng/ctrlsf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'dyng/ctrlsf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
-Plug 'airblade/vim-gitgutter'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -58,10 +58,8 @@ let g:ctrlsf_ackprg='rg'
 
 " Set colorscheme
 set termguicolors
-" colorscheme pyte
-" colorscheme substrata
-colorscheme typewriter
-" colorscheme typewriter-night
+" colorscheme typewriter-dark
+colorscheme typewriter-light
 
 " Set lightline colorscheme
 let g:lightline = {'colorscheme': 'wombat'}
@@ -101,14 +99,14 @@ tnoremap <Esc> <C-\><C-n>
 " Repeat macro stored in 'q' register via space
 noremap <Space> @q
 
-" NOTE: We don't use netrw as the tree view is constantly buggy. In environments 
+" NOTE: We don't use netrw as the tree view is constantly buggy. In environments
 " where we cannot use other plugins for exploring directory structure this serves
 " as reference:
 "
 " Setup netrw configuration
 " Default window size
 " let g:netrw_winsize=30
-" Show directory tree 
+" Show directory tree
 " let g:netrw_liststyle=3
 " Remove useless banner
 " let g:netrw_banner=0
