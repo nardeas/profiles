@@ -59,7 +59,8 @@ let g:ctrlsf_ackprg='rg'
 " Set colorscheme
 set termguicolors
 " colorscheme typewriter-dark
-colorscheme typewriter-light
+" colorscheme typewriter-light
+colorscheme substrata
 
 " Set lightline colorscheme
 let g:lightline = {'colorscheme': 'wombat'}

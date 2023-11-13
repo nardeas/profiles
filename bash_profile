@@ -61,6 +61,10 @@ alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 # - fzf
 # - bat
 
+# To use Homebrew llvm clang instead of Apples own with global setting:
+# export CC=/usr/local/opt/llvm/bin/clang
+# Alternatively, check the output on 'brew info llvm'
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
