@@ -1,0 +1,40 @@
+# Bash profile helpers
+alias uprofile="source ~/.bash_profile"
+alias eprofile="nvim ~/.bash_profile"
+
+# Show directory listing with colors
+alias ls="ls -G"
+
+# Path helpers
+alias cdp="cd ~/Private"
+alias cdd="cd ~/Desktop"
+alias ooo="open ~"
+alias odo="open ~/Downloads"
+
+# Remove helpers
+alias rm="trash -v"
+alias rmq="trash"
+alias rmf="/bin/rm"
+alias rmff="/bin/rm -rf"
+alias rmdsf="find . -name '.DS_Store' -type f -delete"
+
+# File helpers
+alias z="fuzzy_find_file"
+alias ze="fuzzy_find_and_edit"
+alias zl="fuzzy_find_and_show"
+alias fif="find_in_file"
+
+# Process helpers
+alias px="show_process_by_name"
+
+alias freestat="top -l 1 -s 0 | grep PhysMem"
+
+alias gits="check_git_status"
+
+alias lsop="list_open_ports"
+
+# Create random string
+alias rstr="create_random_string"
+
+# Copy without newlines
+alias xclip="tr -d '\n' | pbcopy"
