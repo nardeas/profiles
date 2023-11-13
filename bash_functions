@@ -70,8 +70,8 @@ function fuzzy_find_and_show(){
 	bat --theme=Nord $filename
 }
 
-# rg: finds string in file, usage: find_in_file <search term>
-function find_in_file() {
+# fzf: fuzzy finds string in files, usage: fuzzy_find_in_file <search term>
+function fuzzy_find_in_file() {
 	if [ ! "$#" -gt 0 ]; then
 		echo "Need a string to search for!";
 		return 1;

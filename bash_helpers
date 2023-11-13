@@ -16,13 +16,13 @@ alias rm="trash -v"
 alias rmq="trash"
 alias rmf="/bin/rm"
 alias rmff="/bin/rm -rf"
-alias rmdsf="find . -name '.DS_Store' -type f -delete"
+alias rmds="find . -name '.DS_Store' -type f -delete"
 
 # File helpers
 alias z="fuzzy_find_file"
 alias ze="fuzzy_find_and_edit"
 alias zl="fuzzy_find_and_show"
-alias fif="find_in_file"
+alias zf="fuzzy_find_in_file"
 
 # Process helpers
 alias px="show_process_by_name"
