@@ -33,8 +33,6 @@ alias gits="check_git_status"
 
 alias lsop="list_open_ports"
 
-# Create random string
 alias rstr="create_random_string"
 
-# Copy without newlines
 alias xclip="tr -d '\n' | pbcopy"
