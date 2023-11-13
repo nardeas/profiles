@@ -1,4 +1,4 @@
-# Spellbook/bash
+# Notes/ bash
 
 ## Searching
 
