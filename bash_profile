@@ -9,11 +9,22 @@
 source ~/.bash_functions
 source ~/.bash_helpers
 
+# This re-uses the same SSH auth sock for all sessions, meaning identities only
+# need to be added once
+#   export SSH_AUTH_SOCK=~/.ssh/ssh-agent.sock
+# Check identities
+#   ssh-add -l 2>/dev/null >/dev/null
+#   [ $? -ge 2 ] && ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null
+
+# This spawns a new agent for every session
+eval "$(ssh-agent -s)" 1>/dev/null
+# Add identities
+ssh-add --apple-use-keychain 2>/dev/null
+
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-eval "$(ssh-agent -s)" 1>/dev/null
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
