@@ -71,7 +71,7 @@ function fuzzy_find_and_show(){
 }
 
 # fzf: fuzzy finds string in files, usage: fuzzy_find_in_file <search term>
-function fuzzy_find_in_file() {
+function fuzzy_find_in_file(){
 	if [ ! "$#" -gt 0 ]; then
 		echo "Need a string to search for!";
 		return 1;
