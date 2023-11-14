@@ -76,7 +76,14 @@ function fuzzy_find_in_file(){
 		echo "Need a string to search for!";
 		return 1;
 	fi
-	rg --files-with-matches --no-messages "$1" | fzf $FZF_PREVIEW_WINDOW --preview "rg --ignore-case --pretty --context 10 '$1' {}"
+	result=$(rg --files-with-matches --no-messages "$1" | fzf $FZF_PREVIEW_WINDOW --preview "rg --ignore-case --pretty --context 10 '$1' {}")
+    echo $result
+}
+
+# fzf: fuzzy finds string in files and edit, usage: fuzzy_find_in_file <search term>
+function fuzzy_find_in_file_and_edit(){
+    filename=$(fuzzy_find_in_file "$@")
+    nvim $filename
 }
 
 # top: Monitor processes by name

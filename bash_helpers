@@ -23,6 +23,7 @@ alias z="fuzzy_find_file"
 alias ze="fuzzy_find_and_edit"
 alias zl="fuzzy_find_and_show"
 alias zf="fuzzy_find_in_file"
+alias zfe="fuzzy_find_in_file_and_edit"
 
 # Process helpers
 alias px="show_process_by_name"

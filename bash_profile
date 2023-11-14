@@ -38,6 +38,7 @@ export VISUAL="/usr/bin/vim -u ~/.vimrc"
 
 alias ipy="ipython"
 alias vim="nvim"
+alias edit="vim"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
