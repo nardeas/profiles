@@ -10,6 +10,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
+Plug 'David-Kunz/gen.nvim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -18,22 +19,22 @@ call plug#end()
 let mapleader=","
 
 " Open new buffer and close previous
-nnoremap <Leader>n <C-w>n<C-w><C-p><C-w>q
+noremap <Leader>n <C-w>n<C-w><C-p><C-w>q
 " Open new tab via
-nnoremap <Leader>t :tabnew<CR>
+noremap <Leader>t :tabnew<CR>
 " Resync syntax highlighting
 nnoremap <Leader>R :syntax sync fromstart<CR>
 " Highlight non-ascii characters
 nnoremap <Leader>E /[^\x00-\x7F]<CR>
 
 " Setup MarkdownPreview plugin
-nnoremap <Leader>m :MarkdownPreview<CR>
+noremap <Leader>m :MarkdownPreview<CR>
 
 " Setup fzf plugin
-nnoremap <Leader>p :Files<CR>
+noremap <Leader>p :Files<CR>
 
 " Setup Nerdtree plugin
-nnoremap <Leader>e :NERDTreeToggle<CR>
+noremap <Leader>e :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
 let NERDTreeIgnore=[
@@ -56,6 +57,9 @@ vmap <Leader>F <Plug>CtrlSFVwordExec
 " Set recursive grep program for CtrlSF
 let g:ctrlsf_ackprg='rg'
 
+" Set gen plugin
+noremap <Leader>g :Gen<CR>
+noremap <Leader>G :Gen Generate<CR>
 " Set colorscheme
 set termguicolors
 " colorscheme typewriter-dark
