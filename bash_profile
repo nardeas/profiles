@@ -23,13 +23,13 @@ ssh-add --apple-use-keychain 2>/dev/null
 
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$HOME/.local/bin:$PATH"
 
-if command -v pyenv 1>/dev/null 2>&1; then
+if [ "$(which pyenv)" ]; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 fi
-if command -v pyenv virtualenv 1>/dev/null 2>&1; then
+if [ "$(pyenv virtualenv --help 2>/dev/null)" ]; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
