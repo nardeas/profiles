@@ -15,6 +15,9 @@ Plug 'David-Kunz/gen.nvim'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
+" Set language
+language en_US
+
 " Define leader key
 let mapleader=","
 
@@ -42,9 +45,12 @@ let NERDTreeIgnore=[
 	\'\.git$',
 	\'\.ipynb_checkpoints$',
 	\'\.mypy_cache$',
+	\'\.python-version$',
 	\'__pycache__$',
 	\'.*\.egg\-info$',
-	\'node_modules$'
+	\'node_modules$',
+    \'\.venv$',
+    \'\.*\.lock$'
 	\]
 
 autocmd FileType nerdtree setlocal relativenumber

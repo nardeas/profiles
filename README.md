@@ -1,5 +1,7 @@
 # Profiles
 
+> Run `update.sh` to update all symlinks at once
+
 **Bash:**
 ```
 ln -s $PWD/bash_functions ~/.bash_functions
