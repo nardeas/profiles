@@ -30,7 +30,7 @@ alias px="show_process_by_name"
 
 alias freestat="top -l 1 -s 0 | grep PhysMem"
 
-alias gits="check_git_status"
+alias gits="git_get_status"
 
 alias lsop="list_open_ports"
 

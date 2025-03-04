@@ -7,14 +7,13 @@ function before_prompt(){
 function update_prompt() {
 	DEFAULT='\[\e[0m\]'
 	BLUE='\[\e[0;34m\]'
-	CYAN='\[\e[0;36m\]'
 	GREEN='\[\e[0;32m\]'
 
 	PS1="\h:\W"
-	IS_GIT=$(ls -la|grep -Ei "\.git$")
-	if [[ $IS_GIT ]]; then
+	GIT_NAME=$(git_get_repository)
+	if [[ $GIT_NAME ]]; then
 		if [[ $(git diff) ]]; then
-			COLOR="$CYAN"
+			COLOR="$BLUE"
 			PREFIX="*"
 		else
 			COLOR="$GREEN"
@@ -23,27 +22,13 @@ function update_prompt() {
 		PS1="$PS1 ${COLOR}[$PREFIX$(git branch --show-current)]${DEFAULT}"
 	fi
 	if [[ $VIRTUAL_ENV != "" ]]; then
-		PS1="${BLUE}{${VIRTUAL_ENV##*/}}${DEFAULT} $PS1"
+        if [[ $VIRTUAL_ENV_PROMPT != "" ]]; then
+            PS1="${BLUE}(${VIRTUAL_ENV_PROMPT})${DEFAULT} $PS1"
+        else
+		    PS1="${BLUE}{${VIRTUAL_ENV##*/}}${DEFAULT} $PS1"
+        fi
 	fi
 	PS1="$PS1\$ "
-}
-
-# git: Check git status if current path is a git repository
-function check_git_status(){
-	IS_GIT=$(ls -la|grep -Ei "\.git$")
-	if [[ $IS_GIT ]]; then
-		git status
-	fi
-}
-
-# python: Create random alphanumeric string
-function create_random_string(){
-	python -c 'import string,random,sys; print("".join((random.choice(string.ascii_lowercase + string.ascii_uppercase + string.digits) for i in range(int(sys.argv[1])))))' $1
-}
-
-# netstat: List open ports
-function list_open_ports(){
-    netstat -Watnlv | grep LISTEN | awk '{"ps -o comm= -p " $9 | getline procname;colbold="\033[01;01m";colcyan="\033[01;36m";colgreen="\033[01;32m";colclr="\033[0m"; print colbold "proto: " colclr $1 colgreen " | port: " colclr $4 colcyan " | pid: " colclr $9 colcyan " | name: " colclr procname;  }' | column -t -s "|"
 }
 
 # bash: Flush DNS cache
@@ -86,9 +71,35 @@ function fuzzy_find_in_file_and_edit(){
     nvim $filename
 }
 
+# git: Check if we are inside git repository and output repository name 
+function git_get_repository(){
+    HAS_GIT=$(which git)
+    if [[ $HAS_GIT ]]; then
+        git rev-parse --is-inside-work-tree &>/dev/null && echo $(basename $(git rev-parse --show-toplevel))
+    fi
+}
+
+# git: Check git status if current path is a git repository
+function git_get_status(){
+	IS_GIT=$(git_get_repository)
+	if [[ $IS_GIT ]]; then
+		git status
+	fi
+}
+
+# netstat: List open ports
+function list_open_ports(){
+    netstat -Watnlv | grep LISTEN | awk '{"ps -o comm= -p " $9 | getline procname;colbold="\033[01;01m";colcyan="\033[01;36m";colgreen="\033[01;32m";colclr="\033[0m"; print colbold "proto: " colclr $1 colgreen " | port: " colclr $4 colcyan " | pid: " colclr $9 colcyan " | name: " colclr procname;  }' | column -t -s "|"
+}
+
 # top: Monitor processes by name
 function show_process_by_name(){
 	top $(ps aux|grep $1|awk '{print "-pid "$2}'|xargs)
+}
+
+# python: Create random alphanumeric string
+function create_random_string(){
+	python -c 'import string,random,sys; print("".join((random.choice(string.ascii_lowercase + string.ascii_uppercase + string.digits) for i in range(int(sys.argv[1])))))' $1
 }
 
 # python: clean cache files
