@@ -10,6 +10,12 @@ ln -s $PWD/bash_profile ~/.bash_profile
 chmod a+x ~/.bash_*
 ```
 
+> Additionally, include in `.bashrc`:
+> ```
+> source ~/.bash_profile
+> ```
+> to ensure that configuration is available even when not using login shell explicitly (e.g virtualenv shells).
+
 **Vim:**
 
 ```
