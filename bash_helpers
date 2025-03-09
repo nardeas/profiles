@@ -39,3 +39,4 @@ alias rstr="create_random_string"
 alias xclip="tr -d '\n' | pbcopy"
 
 alias ?="ask_ollama1"
+alias ??="ask_chatgpt1"
