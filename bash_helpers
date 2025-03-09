@@ -32,7 +32,7 @@ alias freestat="top -l 1 -s 0 | grep PhysMem"
 
 alias gits="git_get_status"
 
-alias lsop="list_open_ports"
+alias lsop="list_open_ports_ext"
 
 alias rstr="create_random_string"
 
