@@ -119,11 +119,30 @@ function python_clean_cache(){
 
 # ollama: ask code references
 function ask_ollama1(){
-    prompt="$*\nOnly output the code as raw string, nothing else"
-    payload="{\"model\": \"deepseek-coder-v2:16b\", \"prompt\": \"$prompt\", \"stream\": false}"
-    endpoint="http://localhost:11434/api/generate"
+    PROMPT="$*\nOnly output the code as raw string, nothing else"
+    PAYLOAD="{\"model\": \"deepseek-coder-v2:16b\", \"prompt\": \"$PROMPT\", \"stream\": false}"
+    ENDPOINT="http://localhost:11434/api/generate"
     of=$(mktemp) && \
-    curl -s $endpoint -d "$payload" -H "Content-Type: application/json" | jq .response -r > $of && \
+    curl -s $ENDPOINT -d "$PAYLOAD" -H "Content-Type: application/json" | jq .response -r > $of && \
     mdv -t "830.9345" $of && \
     /bin/rm $of
+}
+
+# chatgpt: ask anything
+function ask_chatgpt1(){
+    PROMPT="$*"
+    MODEL="gpt-4o-mini"
+    ENDPOINT="https://api.openai.com/v1/chat/completions"
+    KEY=$(security find-generic-password -s "OPENAI_API_KEY" -a "$USER" -w) && \
+        curl "$ENDPOINT" -s \
+             -H "Authorization: Bearer $KEY" \
+             -H "Content-Type: application/json" \
+             -d '{
+               "model": "'"$MODEL"'",
+               "messages": [
+                 {"role": "system", "content": "You are a helpful assistant."},
+                 {"role": "user", "content": "'"$PROMPT"'"}
+               ],
+               "temperature": 0.7
+             }' | jq .choices[0].message.content -r
 }
