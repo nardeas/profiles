@@ -115,6 +115,6 @@ function ask_ollama1(){
     endpoint="http://localhost:11434/api/generate"
     of=$(mktemp) && \
     curl -s $endpoint -d "$payload" -H "Content-Type: application/json" | jq .response -r > $of && \
-    mdv $of && \
+    mdv -t "830.9345" $of && \
     /bin/rm $of
 }
