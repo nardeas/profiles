@@ -107,3 +107,14 @@ function python_clean_cache(){
 	echo "Cleaning cache files"
 	find . -type d -name __pycache__ -exec rm -r -v {} \+ 2>/dev/null
 }
+
+# ollama: ask code references
+function ask_ollama1(){
+    prompt="$*\nOnly output the code as raw string, nothing else"
+    payload="{\"model\": \"deepseek-coder-v2:16b\", \"prompt\": \"$prompt\", \"stream\": false}"
+    endpoint="http://localhost:11434/api/generate"
+    of=$(mktemp) && \
+    curl -s $endpoint -d "$payload" -H "Content-Type: application/json" | jq .response -r > $of && \
+    mdv $of && \
+    /bin/rm $of
+}
