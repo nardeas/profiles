@@ -131,18 +131,11 @@ function ask_ollama1(){
 # chatgpt: ask anything
 function ask_chatgpt1(){
     PROMPT="$*"
-    MODEL="gpt-4o-mini"
-    ENDPOINT="https://api.openai.com/v1/chat/completions"
+    MODEL="gpt-4.1-mini"
+    ENDPOINT="https://api.openai.com/v1/responses"
     KEY=$(security find-generic-password -s "OPENAI_API_KEY" -a "$USER" -w) && \
         curl "$ENDPOINT" -s \
              -H "Authorization: Bearer $KEY" \
              -H "Content-Type: application/json" \
-             -d '{
-               "model": "'"$MODEL"'",
-               "messages": [
-                 {"role": "system", "content": "You are a helpful assistant."},
-                 {"role": "user", "content": "'"$PROMPT"'"}
-               ],
-               "temperature": 0.7
-             }' | jq .choices[0].message.content -r
+             -d '{"model": "'"$MODEL"'", "input": "'"$PROMPT"'", "temperature": 0.7}' | jq -r '.output_text[0]'
 }
