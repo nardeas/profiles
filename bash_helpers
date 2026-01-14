@@ -6,7 +6,8 @@ alias eprofile="nvim ~/.bash_profile"
 alias ls="ls -G"
 
 # Path helpers
-alias cdp="cd ~/Private"
+alias cdp="cd ~/Public"
+alias cdpp="cd ~/Private"
 alias cdd="cd ~/Desktop"
 alias ooo="open ~"
 alias odo="open ~/Downloads"
