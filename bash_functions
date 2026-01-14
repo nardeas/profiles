@@ -89,7 +89,7 @@ function git_get_status(){
 
 # netstat: List open ports
 function list_open_ports(){
-    netstat -Watnlv | grep LISTEN | awk '{"ps -o comm= -p " $9 | getline procname;colbold="\033[01;01m";colcyan="\033[01;36m";colgreen="\033[01;32m";colclr="\033[0m"; print colbold "proto: " colclr $1 colgreen " | port: " colclr $4 colcyan " | pid: " colclr $9 colcyan " | name: " colclr procname;  }' | column -t -s "|"
+    netstat -Watnlv | grep LISTEN | awk '{"ps -o comm= -p " $11 | getline procname;colbold="\033[01;01m";colcyan="\033[01;36m";colgreen="\033[01;32m";colclr="\033[0m"; print colbold "proto: " colclr $1 colgreen " | port: " colclr $4 colcyan " | pid: " colclr $11 colcyan " | name: " colclr procname;  }' | column -t -s "|"
 }
 
 # netstat: List open ports with optional grep
